@@ -1,5 +1,7 @@
-Projet Scrapy Citations
-Ce projet utilise Scrapy pour extraire des citations et leurs auteurs du site "https://quotes.toscrape.com/". Les données extraites sont ensuite stockées dans une base de données MongoDB à l'aide d'un pipeline personnalisé. Un serveur web Flask est utilisé pour afficher aléatoirement les citations stockées dans la base de données.
+# SCRAPY
+Ce projet utilise Scrapy pour extraire des citations et leurs auteurs du site "https://quotes.toscrape.com/". 
+Les données extraites sont ensuite stockées dans une base de données MongoDB à l'aide d'un pipeline personnalisé. 
+Un serveur web Flask est utilisé pour afficher aléatoirement les citations stockées dans la base de données.
 
 Fonctionnalités
 Extraction de données : Utilisation de Scrapy pour extraire des citations et des informations sur les auteurs.
@@ -24,6 +26,8 @@ bash
 Copy code
 cd chemin/vers/le/spider
 scrapy crawl jobs
+
+# FLASK
 Lancement du Serveur Flask
 Pour démarrer le serveur Flask et afficher les citations :
 
@@ -37,6 +41,5 @@ Configuration
 Scrapy: Le spider est défini dans spider.py. Modifiez les URLs ou les sélecteurs XPath/CSS selon vos besoins.
 MongoDB: Le pipeline MongoDB est configuré dans pipelines.py. Adaptez les paramètres de connexion à votre configuration MongoDB.
 Flask: Le serveur Flask est défini dans app.py. Ajustez les routes ou le port selon vos préférences.
-Contribution
-Les contributions sont les bienvenues ! N'hésitez pas à créer des issues ou des pull requests pour améliorer le projet.
+
 
