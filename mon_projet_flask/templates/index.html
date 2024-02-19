@@ -45,6 +45,7 @@
 
 <script>
     let symbole = ["redHeart", "diamond", "trefle", "spade"];
+    let currentIndice = 0
     function refreshData() {
         // Faire une requête au serveur Flask pour obtenir une nouvelle citation
         fetch('/refresh')
@@ -54,9 +55,14 @@
             document.querySelector('.auteurName').innerText = data.auteur;
             document.querySelector('.auteurCitation').innerText = data.citation;
             let element = document.getElementById("card");
-            //     element.classList.remove("redHeart"); // Remove mystyle class from DIV
-            // element.classList.add("spade"); // Add newone class to DIV
-        element.setAttribute("class", symbole[ Math.floor(Math.random() * 4)])
+            let nextIndice = Math.floor(Math.random() * 4);
+
+            while (nextIndice == currentIndice) {
+                nextIndice = Math.floor(Math.random() * 4);
+            }
+
+            currentIndice = nextIndice;
+            element.setAttribute("class", symbole[nextIndice]);
 
         })
             .catch(error => console.error('Erreur lors du rafraîchissement des données:', error));  
@@ -66,19 +72,33 @@
 </script>
 
 <style>
+    :root {
+        --gold: #ffb338;
+        --light-shadow: #77571d;
+        --dark-shadow: #3e2904;
+      }
+
+
+
     #refreshButton{
         border-radius: 50%;
         height: 7rem;
         width: 7rem;
-        box-shadow: 0px 1px 5px darkblue;
-        background-color: #33336b12;
         font-style: italic;
         font-family: cursive;
+
+
+    background-image: repeating-linear-gradient( 105deg, 
+    var(--gold) 0% , 
+    var(--dark-shadow) 5%,
+    var(--gold) 12%);
+    color: transparent;
+    filter: drop-shadow(5px 15px 15px black);
+    transform: scaleY(1.05);
     }
 
 
-    #card,
-.envelope {
+    #card,.envelope {
   background: #fff;
   box-shadow: -1px 8px 3px 0 rgba(0, 0, 0, 0.6);
   height: 30em;
@@ -241,13 +261,13 @@ body {
     background-image: -webkit-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
     background-image: -ms-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
  
-    background-image: -webkit-gradient(
+    /* background-image: -webkit-gradient(
         linear,
         left bottom,
         left top,
         color-stop(0, rgb(73,132,180)),
         color-stop(1, rgb(97,155,203))
-    );
+    ); */
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;

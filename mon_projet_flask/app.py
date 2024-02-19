@@ -54,7 +54,7 @@ import random
 
 app = Flask(__name__)
 client = MongoClient('mongodb://localhost:27017/')
-db = client['DB_SRAPY']  # Assurez-vous d'utiliser le même nom de base de données que dans votre pipeline Scrapy
+db = client['DB_SCRAPY']  # Assurez-vous d'utiliser le même nom de base de données que dans votre pipeline Scrapy
 collection = db['scrapy_citations']  # Remplacez par le nom de votre collection
 
 @app.route('/')
